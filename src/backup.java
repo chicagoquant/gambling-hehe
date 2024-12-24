@@ -1,9 +1,10 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.sql.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class GambleIngHEHEHEHE {
+public class backup {
     public static void main(String[] args) {
         int money = 0;
         while (true) {
@@ -26,7 +27,6 @@ public class GambleIngHEHEHEHE {
         System.out.println("Roulette Wheels - 1");
         System.out.println("Slot Machines - 2");
         System.out.println("Lottery - 3");
-        System.out.println("Blackjack - 4");
         int gamePicked = pickGame.nextInt();
         switch(gamePicked) {
             case 1:
@@ -39,7 +39,7 @@ public class GambleIngHEHEHEHE {
                 return playLot(money);
 
             case 4:
-                return playBlackjack(money);
+                return playRoulette(money);
 
             default:
                 return money;
@@ -231,56 +231,6 @@ public class GambleIngHEHEHEHE {
     private static  int getRandNum(int maxNumNoteThatMinIsZeroByDefault) {
         return (int) (Math.random() * maxNumNoteThatMinIsZeroByDefault);
     }
-    public static String randCard (){
-        String[] symbolsP1 = {
-                "♠",
-                "♥",
-                "♦",
-                "♣"
-        };
-        String[] symbolsP2 = {
-                "A",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                "10",
-                "J",
-                "Q",
-                "K"
-        };
-        String randCard = new StringBuilder().append(symbolsP1[getRandNum(4)]).append(symbolsP2[getRandNum(13)]).toString();
-        return randCard;
-    }
-    public static String randCardWNum (int randNum){
-        String[] symbolsP1 = {
-                "♠",
-                "♥",
-                "♦",
-                "♣"
-        };
-        String[] symbolsP2 = {
-                "A",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                "10",
-                "J",
-                "Q",
-                "K"
-        };
-        String randCard = new StringBuilder().append(symbolsP1[getRandNum(4)]).append(symbolsP2[randNum-1]).toString();
-        return randCard;
-    }
 
 
 
@@ -304,7 +254,28 @@ public class GambleIngHEHEHEHE {
             numAmount = 20;
         }
         //MAKE SURE THIS IS A STRING//
-        String[] cardNums = new String[20];
+        String[] cardNums = {
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+        };
         int numbersConfirmed = 0;
         while (numbersConfirmed < numAmount) {
             numbersConfirmed++;
@@ -384,31 +355,5 @@ public class GambleIngHEHEHEHE {
                 outputString = new StringBuilder().append(outputString).append(" - ").append(inputArray[numbersRead - 1]).append(" - ").toString();
             }
         } return outputString;}
-public static int playBlackjack(int money){
-        for(int i = 0; i<1000; i++) {System.out.println(randCardWNum(1));}
-    String[] showHand = new String[23];
-    int dealerHand = 0;
-    int[] dealerHandVals = new int[23];
-        String dealerShow = "";
-    System.out.println("These are the rules for blackjack.");
-    System.out.println("1. To start, you get 2 cards. The dealer (Computer in this case) also gets 2 cards, but you can only see 1 of them.");
-    System.out.println("2. On your turn, you can either\"hit\" or \"stand\". If you hit, you get another card. If you stand, you don't get another card, and the game is over.");
-    System.out.println("3. Your goal is to get as close to a total value of 21 without going over 21. Face cards, like kings or queens count as 10.");
-    System.out.println("4. Aces count as 11, but if getting eleven makes you go over 21, then the ace counts as a 1.");
-    System.out.println("5. The best possible hand is 21, and you can keep going until you want to stand. However, the dealer has to stand once they reach a total of 18 or higher, so you have a slight advantage.");
-    System.out.println("6. Betting wise, if you lose, you lose your money. If you win, you get your bet back doubled.");
-    System.out.println("Those are the rules. Happy gambling!");
-//    dealerHand = getRandNum(13);
-//    dealerHandVals[0] = dealerHand;
-//    Rewrite all this code to make it so that it considers a J Q K a 10 and an A a 11 or 1 will have to do that later
-//    dealerShow = randCardWNum(dealerHand);
-//    dealerHandVals[1] = getRandNum(13);
-//    dealerHand = dealerHand+dealerHandVals[1];
-//    System.out.println(dealerShow);
-//    System.out.println(dealerHand);
-//    System.out.println(Arrays.toString(dealerHandVals));
-    return money;
-
 
 }
-    }
