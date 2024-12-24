@@ -1,9 +1,10 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-import java.util.Arrays;
+
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class GambleIngHEHEHEHE {
+public class GamblingHEHEHEHE {
     public static void main(String[] args) {
         int money = 0;
         while (true) {
@@ -28,7 +29,7 @@ public class GambleIngHEHEHEHE {
         System.out.println("Lottery - 3");
         System.out.println("Blackjack - 4");
         int gamePicked = pickGame.nextInt();
-        switch(gamePicked) {
+        switch (gamePicked) {
             case 1:
                 return playRoulette(money);
 
@@ -61,8 +62,8 @@ public class GambleIngHEHEHEHE {
         int numbersBetting = play.nextInt();
         System.out.println("How much would you like to bet? Remember, you currently have $" + money);
         int bet = play.nextInt();
-        int randNum1 = (int)(Math.random() * 36);
-        int randNum2 = (int)(Math.random() * 36);
+        int randNum1 = (int) (Math.random() * 36);
+        int randNum2 = (int) (Math.random() * 36);
         int a = 1;
         if (randNum1 > 29) {
             a = -1;
@@ -195,8 +196,8 @@ public class GambleIngHEHEHEHE {
         while (spins != spinsDone) {
             spinsDone++;
             System.out.println("Spin number " + spinsDone);
-            int randNum1 = (int)(Math.random() * slotInfo[slotMachine - 1][0]);
-            int randNum2 = (int)(Math.random() * slotInfo[slotMachine - 1][0]);
+            int randNum1 = (int) (Math.random() * slotInfo[slotMachine - 1][0]);
+            int randNum2 = (int) (Math.random() * slotInfo[slotMachine - 1][0]);
             int randSuit1 = getRandNum(4);
             int randCard1 = getRandNum(13);
             if (randNum1 == randNum2) {
@@ -228,10 +229,11 @@ public class GambleIngHEHEHEHE {
     }
 
 
-    private static  int getRandNum(int maxNumNoteThatMinIsZeroByDefault) {
+    private static int getRandNum(int maxNumNoteThatMinIsZeroByDefault) {
         return (int) (Math.random() * maxNumNoteThatMinIsZeroByDefault);
     }
-    public static String randCard (){
+
+    public static String randCard() {
         String[] symbolsP1 = {
                 "♠",
                 "♥",
@@ -256,7 +258,8 @@ public class GambleIngHEHEHEHE {
         String randCard = new StringBuilder().append(symbolsP1[getRandNum(4)]).append(symbolsP2[getRandNum(13)]).toString();
         return randCard;
     }
-    public static String randCardWNum (int randNum){
+
+    public static String randCardWNum(int randNum) {
         String[] symbolsP1 = {
                 "♠",
                 "♥",
@@ -278,10 +281,9 @@ public class GambleIngHEHEHEHE {
                 "Q",
                 "K"
         };
-        String randCard = new StringBuilder().append(symbolsP1[getRandNum(4)]).append(symbolsP2[randNum-1]).toString();
+        String randCard = new StringBuilder().append(symbolsP1[getRandNum(4)]).append(symbolsP2[randNum - 1]).toString();
         return randCard;
     }
-
 
 
     public static int playLot(int money) {
@@ -318,7 +320,7 @@ public class GambleIngHEHEHEHE {
         int cardsBought = play.nextInt();
         System.out.println("How much money would you like to bet on your card(s)? The maximum betting amount is 1 billion. Remember, you have $" + money);
         int bet = play.nextInt();
-        if(bet>1000000000) {
+        if (bet > 1000000000) {
             bet = 1000000000;
         }
         int totalBet = bet * cardsBought;
@@ -344,19 +346,19 @@ public class GambleIngHEHEHEHE {
                 "",
                 ""
         };
-        double possibleWinnings = (Math.pow(bet, numAmount+1) /((bet)/numAmount));
+        double possibleWinnings = (Math.pow(bet, numAmount + 1) / ((bet) / numAmount));
         numbersConfirmed = 0;
         while (numbersConfirmed < numAmount) {
             numbersConfirmed++;
-            winningCardNums[numbersConfirmed - 1] = String.valueOf(getRandNum(99)+1);
+            winningCardNums[numbersConfirmed - 1] = String.valueOf(getRandNum(99) + 1);
 
         }
         numbersConfirmed = 0;
-        while (numbersConfirmed<cardsBought) {
+        while (numbersConfirmed < cardsBought) {
             numbersConfirmed++;
             System.out.println("Card Number " + numbersConfirmed);
             if (readableArrayMaker(cardNums).equals(readableArrayMaker(winningCardNums))) {
-                money = (int) (money+possibleWinnings);
+                money = (int) (money + possibleWinnings);
                 System.out.println("Huh! You got real lucky, cause you won! Your winnings are " + possibleWinnings + ". The winning numbers were " + readableArrayMaker(winningCardNums) + ". You now have " + money);
 
 
@@ -368,47 +370,125 @@ public class GambleIngHEHEHEHE {
             int numbersConfirmed1 = 0;
             while (numbersConfirmed1 < numAmount) {
                 numbersConfirmed1++;
-                winningCardNums[numbersConfirmed1 - 1] = String.valueOf(getRandNum(99)+1);
+                winningCardNums[numbersConfirmed1 - 1] = String.valueOf(getRandNum(99) + 1);
 
             }
         }
         return money;
     }
-    private static String readableArrayMaker(String[] inputArray){
+
+    private static String readableArrayMaker(String[] inputArray) {
         int numbersRead = 0;
         int numbersTotal = inputArray.length;
         String outputString = "";
-        while (numbersRead<numbersTotal) {
+        while (numbersRead < numbersTotal) {
             numbersRead++;
-            if (!inputArray[numbersRead-1].equals("")) {
+            if (!inputArray[numbersRead - 1].equals("")) {
                 outputString = new StringBuilder().append(outputString).append(" - ").append(inputArray[numbersRead - 1]).append(" - ").toString();
             }
-        } return outputString;}
-public static int playBlackjack(int money){
-        for(int i = 0; i<1000; i++) {System.out.println(randCardWNum(1));}
-    String[] showHand = new String[23];
-    int dealerHand = 0;
-    int[] dealerHandVals = new int[23];
-        String dealerShow = "";
-    System.out.println("These are the rules for blackjack.");
-    System.out.println("1. To start, you get 2 cards. The dealer (Computer in this case) also gets 2 cards, but you can only see 1 of them.");
-    System.out.println("2. On your turn, you can either\"hit\" or \"stand\". If you hit, you get another card. If you stand, you don't get another card, and the game is over.");
-    System.out.println("3. Your goal is to get as close to a total value of 21 without going over 21. Face cards, like kings or queens count as 10.");
-    System.out.println("4. Aces count as 11, but if getting eleven makes you go over 21, then the ace counts as a 1.");
-    System.out.println("5. The best possible hand is 21, and you can keep going until you want to stand. However, the dealer has to stand once they reach a total of 18 or higher, so you have a slight advantage.");
-    System.out.println("6. Betting wise, if you lose, you lose your money. If you win, you get your bet back doubled.");
-    System.out.println("Those are the rules. Happy gambling!");
-//    dealerHand = getRandNum(13);
-//    dealerHandVals[0] = dealerHand;
-//    Rewrite all this code to make it so that it considers a J Q K a 10 and an A a 11 or 1 will have to do that later
-//    dealerShow = randCardWNum(dealerHand);
-//    dealerHandVals[1] = getRandNum(13);
-//    dealerHand = dealerHand+dealerHandVals[1];
-//    System.out.println(dealerShow);
-//    System.out.println(dealerHand);
-//    System.out.println(Arrays.toString(dealerHandVals));
-    return money;
-
-
-}
+        }
+        return outputString;
     }
+
+    public static int playBlackjack(int money) {
+        for (int i = 0; i < 1000; i++) {
+            System.out.println(randCardWNum(1));
+        }
+        String[] showHand = new String[23];
+        int dealerHand = 0;
+        int[] dealerHandVals = new int[23];
+        String dealerShow = "";
+        System.out.println("These are the rules for blackjack.");
+        System.out.println("1. To start, you get 2 cards. The dealer (Computer in this case) also gets 2 cards, but you can only see 1 of them.");
+        System.out.println("2. On your turn, you can either\"hit\" or \"stand\". If you hit, you get another card. If you stand, you don't get another card, and the game is over.");
+        System.out.println("3. Your goal is to get as close to a total value of 21 without going over 21. Face cards, like kings or queens count as 10.");
+        System.out.println("4. Aces count as 11, but if getting eleven makes you go over 21, then the ace counts as a 1.");
+        System.out.println("5. The best possible hand is 21, and you can keep going until you want to stand. However, the dealer has to stand once they reach a total of 18 or higher, so you have a slight advantage.");
+        System.out.println("6. Betting wise, if you lose, you lose your money. If you win, you get your bet back doubled.");
+        System.out.println("Those are the rules. Happy gambling!");
+
+
+        return money;
+
+
+    }
+
+    public static boolean checkBust(String[] hand) {
+        return (calcHandVal(hand) > 21);
+    }
+
+    public static int calcHandVal(String[] hand) {
+        int[] handVals = new int[23];
+        String[] cardFaces = {
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "J",
+                "Q",
+                "K",
+                "A"
+        };
+
+        int[] cardVals = {
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                10,
+                10,
+                10,
+                11
+        };
+        HashMap<String, Integer> cardLookup = new HashMap<>();
+        for (int i = 0; i < cardFaces.length; i++) {
+            cardLookup.put(cardFaces[i], cardVals[i]);
+        }
+
+        int sum = 0;
+        int aces = 0;
+
+        for (String card : hand) {
+            if (card.equals("A")) {
+                aces++;
+            } else {
+                sum += cardLookup.get(card);
+            }
+        }
+        for (; aces > 0; aces--) {
+            if (sum + 11 > 21) {
+                sum++;
+            } else {
+                sum += 11;
+            }
+        }
+
+        return (sum);
+    }
+
+    public static String[] handSuitify(String[] hand) {
+        HashMap<Integer, String> getSuit = new HashMap<>();
+
+        for (int i = 0; i < CardConstants.SUITS.length; i++) {
+            getSuit.put(i, CardConstants.SUITS[i]);
+        }
+        String[] newHand = new String[hand.length];
+
+        for (int i = 0; i < hand.length; i++) {
+
+            newHand[i] = (getSuit.get(getRandNum(CardConstants.SUITS.length))) + hand[i];
+
+        }
+        return newHand;
+    }
+}
